@@ -57,30 +57,32 @@ fun repLet(cadena:String, letra:Char):Int{
 /** Ejercicio 6. Crea una función que cuenta cuántas veces aparece una subcadena en
 un texto. */
 fun subca(texto:String, subcadena:String):Int{
-    var cont:Int=0
-    for(i in 0 until texto.length){
-        var char: Char=texto[i]
-        var charcad: Char=subcadena[i]
-        if(char==charcad){
-            cont++
-        }
-    }
-    return cont
+
+    var array = texto.split(subcadena)
+    return array.size-1
 }
 
 /** Ejercicio 7. Crea una función que pone en mayúscula la primera letra de cada
 palabra de un texto. */
 fun mayus(texto:String):String{
     var array=texto.split(" ")
+    var arrayMutable = mutableListOf<String>()
+    array = array.toMutableList()
+    println(array)
     var res: String=""
-    for(i in 0 .. array.size-1){
-        if(i==1){
-            array[i].uppercase()
-        }
-        res+=array[i]
+    for(palabra in  array){
+        arrayMutable.add(palabra.replaceFirstChar { char -> char.uppercase() })
     }
+
+    println(arrayMutable)
     return res
 }
+
+/** Ejercicio 8. Crea una función que sume los dígitos de un número. Ejemplo:
+sumaDigitos(245) = 2 + 4 + 5 = 11. */
+
+
+
 
 fun main(){
 /** 4 */
@@ -88,4 +90,10 @@ fun main(){
 
     /** 5 */
     println(repLet("amar", 'a'))
+
+    /** 7 */
+    println(subca("la letra que leto leo let", "let"))
+
+    /** 7
+    println(mayus("la letra que leo"))*/
 }
