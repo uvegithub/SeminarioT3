@@ -80,9 +80,36 @@ fun mayus(texto:String):String{
 
 /** Ejercicio 8. Crea una función que sume los dígitos de un número. Ejemplo:
 sumaDigitos(245) = 2 + 4 + 5 = 11. */
+fun sumaDigitos(numero:Int):Int{
+    var suma:Int=0
+    var n = numero
+    while(n>0){
+        suma+=n%10
+        n/=10
+    }
 
+    return suma
+}
 
+/** Ejercicio 9. Crea una función que calcule el máximo común divisor de dos números
+naturales */
+fun mcd(n1:Int, n2:Int):Int{
+    var aux:Int
+    var numero1 = n1
+    var numero2 = n2
+    while(numero2 != 0){
+        aux=numero2
+        numero2 = numero1 % numero2
+        numero1= aux
+    }
+    return numero1
+}
 
+/** Ejercicio 10. Crea una función que calcule el término n-ésimo de la sucesión de Finbonacci. Se introduce la posición en la serie y devuelve el numero de la serie que corresponde*/
+/**fun fibo(n:Int):Int{
+    var a=0
+    var b=1
+}*/
 
 fun main(){
 /** 4 */
@@ -96,4 +123,12 @@ fun main(){
 
     /** 7
     println(mayus("la letra que leo"))*/
+
+    /** 8 */
+    println(sumaDigitos(245))
+
+    /** 9 */
+    println(mcd(18, 24))
+
+    /** 10 */
 }
