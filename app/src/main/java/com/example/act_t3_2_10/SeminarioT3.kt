@@ -106,10 +106,91 @@ fun mcd(n1:Int, n2:Int):Int{
 }
 
 /** Ejercicio 10. Crea una función que calcule el término n-ésimo de la sucesión de Finbonacci. Se introduce la posición en la serie y devuelve el numero de la serie que corresponde*/
-/**fun fibo(n:Int):Int{
+fun fibo(n:Int):Int{
     var a=0
     var b=1
-}*/
+    var res:Int=0
+    for (i in 3 .. n){
+        res=a+b
+        a=b
+        b=res
+    }
+    return res
+}
+
+/** Ejercicio 11. Crea una función que determine si dos números son primos relativos. */
+fun primRel(n1:Int, n2:Int):Boolean{
+    var res:Boolean=false
+    var arrayn1= arrayListOf<Int>()
+    var arrayn2= arrayListOf<Int>()
+    var arrayaux= arrayListOf<Int>()
+    for (i in 1 until n1){
+        if(n1%i==0){
+            arrayn1.add(i)
+        }
+    }
+    for (i in 1 until n2){
+        if(n2%i==0){
+            arrayn2.add(i)
+        }
+    }
+
+    for(elto1 in  arrayn1){
+        for(elto2 in arrayn2){
+            if(elto1 == elto2){
+                arrayaux.add(elto1)
+            }
+        }
+    }
+
+    if(arrayaux.size==1){
+        res=true
+    }
+
+    return res
+}
+
+/** Ejercicio 12. Crea una función que determine si un número dado es capicúa. */
+
+fun capicua(numero:Int): Boolean{
+    var res: Boolean= false
+    var aux:Int = numero
+    var cifra:Int
+    var inverso:Int=0
+    while (aux!=0){
+        cifra = aux % 10
+        inverso = inverso * 10 + cifra;
+        aux = aux / 10;
+    }
+
+    if(numero == inverso){
+        res=true
+    }
+
+    return res
+}
+
+/** Ejercicio 13. Crea una función que dada una cadena de texto con formato Emmet
+devuelva su correspondiente etiqueta HTML, teniendo en cuenta sólo los atributos
+de clase e id. */
+fun html(cadena: String):String{
+    var res:String
+    res="<$cadena>"+"</$cadena>"
+
+    cadena.split(".")
+
+    return res
+}
+
+/** Ejercicio 14. Crea una función que dado un número n imprima el siguiente ‘mosaico’ */
+fun mosaico(n:Int):String{
+    var res:String=""
+    for (i in 1 until n){
+        res+=i.toString()+"\n"
+    }
+    return res
+}
+
 
 fun main(){
 /** 4 */
@@ -131,4 +212,16 @@ fun main(){
     println(mcd(18, 24))
 
     /** 10 */
+    println(fibo(5))
+
+    /** 11 */
+    println(primRel(20, 33))
+
+    /** 12 */
+    println(capicua(242))
+
+    /** 13 */
+
+    /** 14 */
+    println(mosaico(6))
 }
