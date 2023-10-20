@@ -174,10 +174,22 @@ fun capicua(numero:Int): Boolean{
 devuelva su correspondiente etiqueta HTML, teniendo en cuenta sólo los atributos
 de clase e id. */
 fun html(cadena: String):String{
-    var res:String
-    res="<$cadena>"+"</$cadena>"
+    var res:String=""
 
-    cadena.split(".")
+    /**var res2=String.format(".",)
+    res="<$cadena>"+"</$cadena>"*/
+
+    var punto=cadena.split(".")
+    var punto2=cadena.split(".")
+    var almohadilla=cadena.split("#")
+
+    if(cadena.contains(".") && cadena.contains("#")){
+        res="<div"+almohadilla[0]+" class="+punto2[1]+" id="+almohadilla[1]+"></div>"
+    }else if(cadena.contains(".") && !cadena.contains("#")){
+        res="<"+punto[0]+"class"+punto[1]+"</div>"
+    }else{
+        res="<$cadena>"+"</$cadena>"
+    }
 
     return res
 }
@@ -185,12 +197,30 @@ fun html(cadena: String):String{
 /** Ejercicio 14. Crea una función que dado un número n imprima el siguiente ‘mosaico’ */
 fun mosaico(n:Int):String{
     var res:String=""
-    for (i in 1 until n){
-        res+=i.toString()+"\n"
+
+    for (n in (1 .. n)){
+        for (i in (0 until n)){
+            res+=n.toString()
+        }
+        res+="\n"
     }
     return res
 }
 
+/** Ejercicio 15. Crear una función que reciba dos arrays de enteros y devuelva un array de booleanos
+que determine si los elementos, uno a uno, de ambos arrays son iguales */
+fun array_bolean(array1: Array<Int>, array2: Array<Int>): ArrayList<Boolean> {
+    var res= arrayListOf<Boolean>()
+    var res_mut=res.toList()
+    for (i in array1.indices){
+        if(array1[i]!=array2[i]){
+            res.add(true)
+        }else{
+            res.add(false)
+        }
+    }
+    return res
+}
 
 fun main(){
 /** 4 */
@@ -221,7 +251,13 @@ fun main(){
     println(capicua(242))
 
     /** 13 */
+    println(html("div.coche#polo"))
 
     /** 14 */
     println(mosaico(6))
+
+    /** 15 */
+    var array1= arrayOf(3,1,3)
+    var array2= arrayOf(3,3,3)
+    println(array_bolean(array1,array2))
 }
